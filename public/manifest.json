@@ -1,0 +1,9 @@
+{
+  "manifest_version": 2,
+  "name": "GitHub Fullscreen Notifications",
+  "version": "1.0.0",
+
+  "background": {
+    "scripts": ["extension.js"]
+  }
+}

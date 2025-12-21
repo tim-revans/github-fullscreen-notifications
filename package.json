@@ -15,9 +15,17 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "vite build",
+    "watch": "vite build --watch",
+    "firefox": "web-ext run --source-dir dist"
   },
   "dependencies": {
     "octokit": "^5.0.5"
+  },
+  "devDependencies": {
+    "@types/firefox-webext-browser": "^143.0.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.0",
+    "web-ext": "^9.2.0"
   }
 }
