@@ -1,0 +1,33 @@
+name: Node.js build
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v5
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v6
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build
+      run: npm run build
+
+    - name: Package Firefox
+      run: npm run package
+
+    - name: Upload release artifacts
+      uses: actions/upload-artifact@v6
+      with:
+        name: release.zip
+        path: release
