@@ -29,5 +29,5 @@ jobs:
     - name: Upload release artifacts
       uses: actions/upload-artifact@v6
       with:
-        name: release
-        path: release/**.xpi
+        name: release.zip
+        path: release
