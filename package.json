@@ -17,7 +17,7 @@
   "scripts": {
     "build": "vite build",
     "watch": "vite build --watch",
-    "package": "web-ext build --source-dir dist --artifacts-dir artifacts -n extension-firefox.xpi --overwrite-dest",
+    "package": "web-ext build --source-dir dist --artifacts-dir release -n extension-firefox.xpi --overwrite-dest",
     "firefox": "web-ext run --source-dir dist"
   },
   "dependencies": {
