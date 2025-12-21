@@ -1,0 +1,31 @@
+{
+  "name": "github-fullscreen-notifications",
+  "version": "1.0.0",
+  "description": "An extension to show an image or video over the screen when certain GitHub actions have happened.",
+  "homepage": "https://github.com/tim-revans/github-fullscreen-notifications#readme",
+  "bugs": {
+    "url": "https://github.com/tim-revans/github-fullscreen-notifications/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tim-revans/github-fullscreen-notifications.git"
+  },
+  "license": "MIT",
+  "author": "Tim Revans",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "build": "vite build",
+    "watch": "vite build --watch",
+    "firefox": "web-ext run --source-dir dist"
+  },
+  "dependencies": {
+    "octokit": "^5.0.5"
+  },
+  "devDependencies": {
+    "@types/firefox-webext-browser": "^143.0.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.0",
+    "web-ext": "^9.2.0"
+  }
+}
