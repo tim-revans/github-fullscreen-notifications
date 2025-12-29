@@ -1,3 +1,4 @@
+(function() {
 console.log('Content script loaded');
 
 browser.runtime.onMessage.addListener((message) => {
@@ -62,3 +63,4 @@ function showOverlay() {
   // Remove on click with fade out
   overlay.addEventListener('click', fadeOut);
 }
+})();

@@ -2,7 +2,7 @@ import { Octokit } from 'octokit';
 
 const check_interval = 10 * 1000;
 
-let lastCheckTime: Date = new Date(0);
+let lastCheckTime: Date = new Date(Date.now());
 
 export async function checkRecentPullRequest(owner: string, repo: string, token: string): Promise<boolean> {
     const octokit = new Octokit({

@@ -5,10 +5,17 @@
 
   "permissions": ["storage", "tabs"],
 
-  "content_security_policy": "script-src 'self' 'sha256-O8UDzIoCBD5V7J4b6/n572uzjS7qybxxsl05scYUtTA='; object-src 'self';",
+  "content_security_policy": "script-src 'self' 'sha256-95E6E3C75B23F9121268ED83294B911EEFA971DED0AD476764D1F7F7D46E1C6B'; object-src 'self';",
 
   "options_ui": {
     "page": "options.html"
+  },
+
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "github-fullscreen-notifications@example.com",
+      "strict_min_version": "57.0"
+    }
   },
 
   "content_scripts": [
