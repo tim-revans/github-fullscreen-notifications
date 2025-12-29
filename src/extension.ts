@@ -17,7 +17,7 @@ export async function checkRecentPullRequest(owner: string, repo: string, token:
             state: 'closed',
         });
 
-        const filteredData = response.data.filter(pr => new Date(pr.updated_at) >= lastCheckTime);
+        const filteredData = response.data.filter(pr => new Date(pr.updated_at) >= lastCheckTime && (pr as any).merged === true);
 
         lastCheckTime = new Date(Date.now());
 
