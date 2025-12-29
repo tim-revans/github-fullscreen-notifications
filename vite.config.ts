@@ -9,17 +9,22 @@ export default defineConfig({
     rollupOptions: {
       input: {
         extension: resolve(__dirname, "src/extension.ts"),
+        content: resolve(__dirname, "src/content.ts"),
       },
       output: {
         // MV2 background scripts are classic scripts -> must not contain `import`
-        format: "iife",
+        format: "es",
 
         // Must match manifest.json exactly
-        entryFileNames: "extension.js",
+        entryFileNames: (chunkInfo) => {
+          if (chunkInfo.name === 'extension') return 'extension.js';
+          if (chunkInfo.name === 'content') return 'content.js';
+          return '[name].js';
+        },
 
         // Prevent extra chunks (classic scripts can’t import them)
         manualChunks: undefined,
-        inlineDynamicImports: true,
+        inlineDynamicImports: false,
       },
     },
   },

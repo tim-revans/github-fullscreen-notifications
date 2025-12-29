@@ -17,7 +17,7 @@ export async function checkRecentPullRequest(owner: string, repo: string, token:
             state: 'closed',
         });
 
-        const filteredData = response.data.filter(pr => new Date(pr.updated_at) >= lastCheckTime && (pr as any).merged === true);
+        const filteredData = response.data.filter(pr => new Date(pr.updated_at) >= lastCheckTime);
 
         lastCheckTime = new Date(Date.now());
 
@@ -50,6 +50,19 @@ setInterval(() => {
 
         checkRecentPullRequest(owner, repo, token).then(result => {
             console.log('Recent PR check result:', result);
+            if (result) {
+                browser.tabs.query({active: true, currentWindow: true}).then((tabs) => {
+                    if (tabs[0] && tabs[0].status === 'complete' && tabs[0].url && tabs[0].url.startsWith('http')) {
+                        browser.tabs.sendMessage(tabs[0].id!, {action: 'showOverlay'}).catch((error) => {
+                            console.log('Message send failed:', error);
+                        });
+                    } else {
+                        console.log('Tab not eligible for overlay:', {status: tabs[0]?.status, url: tabs[0]?.url});
+                    }
+                }).catch((error) => {
+                    console.error('Error querying tabs:', error);
+                });
+            }
         }).catch(error => {
             console.error('Error in check:', error);
         });

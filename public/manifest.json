@@ -3,13 +3,20 @@
   "name": "GitHub Fullscreen Notifications",
   "version": "1.0.0",
 
-  "permissions": ["storage"],
+  "permissions": ["storage", "tabs"],
 
   "content_security_policy": "script-src 'self' 'sha256-O8UDzIoCBD5V7J4b6/n572uzjS7qybxxsl05scYUtTA='; object-src 'self';",
 
   "options_ui": {
     "page": "options.html"
   },
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
 
   "background": {
     "scripts": ["extension.js"]
